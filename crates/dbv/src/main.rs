@@ -17,8 +17,9 @@ async fn main() -> Result<(), Box<dyn Error>> {
     debug!("Arg: {:?}", args);
 
     match &args.command {
-        _ => run_app()
-    }.expect("TODO: panic message");
+        _ => run_app(),
+    }
+    .expect("TODO: panic message");
 
     Ok(())
 }
