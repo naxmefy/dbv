@@ -19,7 +19,7 @@ async fn main() -> Result<(), Box<dyn Error>> {
     match &args.command {
         _ => run_app(),
     }
-    .expect("TODO: panic message");
+    .expect("failed to run application");
 
     Ok(())
 }
