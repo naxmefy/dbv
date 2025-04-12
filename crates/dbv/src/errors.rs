@@ -16,7 +16,7 @@ pub fn install_hooks() -> color_eyre::Result<()> {
         panic_hook(panic_info);
     }));
 
-    // convert from a color_eyre EyreHook to a eyre ErrorHook
+    // convert from a color_eyre EyreHook to an eyre ErrorHook
     let eyre_hook = eyre_hook.into_eyre_hook();
     eyre::set_hook(Box::new(
         move |error: &(dyn std::error::Error + 'static)| {
