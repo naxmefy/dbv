@@ -5,7 +5,7 @@ members = [
 ]
 
 [workspace.package]
-version = "0.1.0"
+version = "0.0.1"
 rust-version = "1.88"
 edition = "2024"
 authors = [
@@ -13,6 +13,9 @@ authors = [
 ]
 description = "database viewer"
 documentation = "https://dbv.nax.me"
+homepage = "https://dbv.nax.me"
+repository = "https://github.com/naxmefy/dbv"
+license = "MIT"
 
 [profile.release]
 strip = true
@@ -20,3 +23,8 @@ opt-level = "z"
 lto = true
 codegen-units = 1
 panic = "abort"
+
+# The profile that 'dist' will build with
+[profile.dist]
+inherits = "release"
+lto = "thin"
