@@ -1,0 +1,50 @@
+name: Bug report
+description: Report something that does not work as expected
+labels: [bug]
+body:
+  - type: input
+    id: version
+    attributes:
+      label: dbv version
+      description: Output of `dbv --version`
+    validations:
+      required: true
+  - type: input
+    id: os
+    attributes:
+      label: Operating system
+      placeholder: e.g. macOS 15, Ubuntu 24.04, Windows 11
+    validations:
+      required: true
+  - type: input
+    id: terminal
+    attributes:
+      label: Terminal
+      placeholder: e.g. iTerm2, Windows Terminal, kitty
+    validations:
+      required: true
+  - type: input
+    id: database
+    attributes:
+      label: Database and version
+      placeholder: e.g. SQLite 3.45
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+    validations:
+      required: true
