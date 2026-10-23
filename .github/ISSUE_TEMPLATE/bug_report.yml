@@ -6,7 +6,7 @@ body:
     id: version
     attributes:
       label: dbv version
-      description: Output of `dbv --version`
+      description: Release tag or commit SHA
     validations:
       required: true
   - type: input

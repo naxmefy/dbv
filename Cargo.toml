@@ -16,6 +16,7 @@ documentation = "https://dbv.nax.me"
 homepage = "https://dbv.nax.me"
 repository = "https://github.com/naxmefy/dbv"
 license = "MIT"
+readme = "README.md"
 
 [profile.release]
 strip = true

@@ -8,6 +8,7 @@ jobs:
   # Tags unreleased versions; the tag push triggers release.yml (cargo-dist).
   release-plz-release:
     name: Release-plz release
+    if: ${{ github.repository_owner == 'naxmefy' }}
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -31,6 +32,7 @@ jobs:
   # Opens/updates the release PR (version bump + CHANGELOG.md).
   release-plz-pr:
     name: Release-plz PR
+    if: ${{ github.repository_owner == 'naxmefy' }}
     runs-on: ubuntu-latest
     permissions:
       contents: write
