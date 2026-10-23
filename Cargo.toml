@@ -1,13 +1,13 @@
 [workspace]
-resolver = "2"
+resolver = "3"
 members = [
     "crates/*"
 ]
 
 [workspace.package]
 version = "0.1.0"
-rust-version = "1.70"
-edition = "2021"
+rust-version = "1.88"
+edition = "2024"
 authors = [
     "Mohammed R.W Neundorf <ninevillage@gmail.com>"
 ]
