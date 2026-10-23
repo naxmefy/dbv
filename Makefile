@@ -23,8 +23,10 @@ check: pre-check
 book-check:
 	@mdbook --version >/dev/null 2>&1 || (echo "ERROR: mdbook is required."; exit 1)
 book-build: book-check
+	mdbook-mermaid install book
 	mdbook build book
 bb: book-build
 book-serve: book-check
+	mdbook-mermaid install book
 	mdbook serve --open book
 bs: book-serve
