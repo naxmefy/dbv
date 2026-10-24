@@ -1,0 +1,20 @@
+[workspace]
+publish = false            # crates.io publishing is deferred to M7
+git_release_enable = false # the GitHub Release is created by cargo-dist
+git_tag_name = "v{{ version }}"
+pr_labels = ["release"]
+
+[changelog]
+commit_parsers = [
+    { message = "^feat", group = "Features" },
+    { message = "^fix", group = "Fixes" },
+    { message = "^perf", group = "Performance" },
+    { message = "^docs", group = "Documentation" },
+    { message = "^build", group = "Build" },
+    { message = "^refactor", group = "Refactoring" },
+    { message = ".*", skip = true }, # chore, ci, test and anything else
+]
+
+[[package]]
+name = "dbv"
+changelog_path = "CHANGELOG.md" # repo root, shared with cargo-dist release notes

@@ -1,0 +1,56 @@
+name: release-plz
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  # Tags unreleased versions; the tag push triggers release.yml (cargo-dist).
+  release-plz-release:
+    name: Release-plz release
+    if: ${{ github.repository_owner == 'naxmefy' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+      - name: Run release-plz
+        uses: release-plz/action@v0.5
+        with:
+          command: release
+        env:
+          # A PAT is required: tags pushed with GITHUB_TOKEN do not trigger release.yml.
+          GITHUB_TOKEN: ${{ secrets.RELEASE_PLZ_TOKEN }}
+
+  # Opens/updates the release PR (version bump + CHANGELOG.md).
+  release-plz-pr:
+    name: Release-plz PR
+    if: ${{ github.repository_owner == 'naxmefy' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    concurrency:
+      group: release-plz-${{ github.ref }}
+      cancel-in-progress: false
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+      - name: Run release-plz
+        uses: release-plz/action@v0.5
+        with:
+          command: release-pr
+        env:
+          GITHUB_TOKEN: ${{ secrets.RELEASE_PLZ_TOKEN }}

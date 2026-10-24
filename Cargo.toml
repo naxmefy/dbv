@@ -1,18 +1,22 @@
 [workspace]
-resolver = "2"
+resolver = "3"
 members = [
     "crates/*"
 ]
 
 [workspace.package]
-version = "0.1.0"
-rust-version = "1.70"
-edition = "2021"
+version = "0.0.1"
+rust-version = "1.88"
+edition = "2024"
 authors = [
     "Mohammed R.W Neundorf <ninevillage@gmail.com>"
 ]
 description = "database viewer"
 documentation = "https://dbv.nax.me"
+homepage = "https://dbv.nax.me"
+repository = "https://github.com/naxmefy/dbv"
+license = "MIT"
+readme = "README.md"
 
 [profile.release]
 strip = true
@@ -20,3 +24,8 @@ opt-level = "z"
 lto = true
 codegen-units = 1
 panic = "abort"
+
+# The profile that 'dist' will build with
+[profile.dist]
+inherits = "release"
+lto = "thin"

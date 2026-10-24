@@ -7,6 +7,8 @@ MAKEFLAGS += --no-builtin-rules
 
 default: build
 
+.PHONY: default pre-check build test check book-check book-build bb book-serve bs
+
 pre-check:
 	@rustc --version >/dev/null 2>&1 || (echo "ERROR: rust is required."; exit 1)
 	@cargo --version >/dev/null 2>&1 || (echo "ERROR: cargo is required."; exit 1)
@@ -15,14 +17,17 @@ build: pre-check
 test: pre-check
 	cargo test
 check: pre-check
-	cargo check
-	cargo fmt --check
+	cargo fmt --all --check
+	cargo clippy --workspace --all-targets -- -D warnings
 
 book-check:
 	@mdbook --version >/dev/null 2>&1 || (echo "ERROR: mdbook is required."; exit 1)
+	@mdbook-mermaid --version >/dev/null 2>&1 || (echo "ERROR: mdbook-mermaid is required."; exit 1)
 book-build: book-check
+	mdbook-mermaid install book
 	mdbook build book
 bb: book-build
 book-serve: book-check
+	mdbook-mermaid install book
 	mdbook serve --open book
 bs: book-serve
