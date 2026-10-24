@@ -1,0 +1,21 @@
+[package]
+name = "dbv-sqlite"
+version.workspace = true
+rust-version.workspace = true
+edition.workspace = true
+authors.workspace = true
+description = "SQLite driver for dbv"
+documentation.workspace = true
+homepage.workspace = true
+repository.workspace = true
+license.workspace = true
+readme.workspace = true
+
+[dependencies]
+async-trait.workspace = true
+dbv-core.workspace = true
+rusqlite.workspace = true
+tokio.workspace = true
+
+[dev-dependencies]
+tempfile.workspace = true
