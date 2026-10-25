@@ -14,8 +14,10 @@ readme.workspace = true
 [dependencies]
 async-trait.workspace = true
 dbv-core.workspace = true
+directories.workspace = true
 rusqlite.workspace = true
 tokio.workspace = true
+toml.workspace = true
 
 [dev-dependencies]
 tempfile.workspace = true
